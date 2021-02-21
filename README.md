@@ -8,14 +8,14 @@ React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaf
 ![](showcase.gif)
 
 
-###Installation
+### Installation
 `yarn add react-leaflet-cluster`
 
 Or with npm:
 `npm i react-leaflet-cluster`
 
 
-####Prerequisites
+#### Prerequisites
 Make sure that you've installed react-leaflet and leaflet.
 ```json
 "react": "16.x",
@@ -23,11 +23,11 @@ Make sure that you've installed react-leaflet and leaflet.
 "react-leaflet": "3.0.x"
 ```
 
-###API
+####  API
 For more detailed guide and API see:
 https://akursat.gitbook.io/marker-cluster/api
 
-####Usage
+#### Usage
 
 ```tsx
 import MarkerClusterGroup from 'react-leaflet-cluster'
