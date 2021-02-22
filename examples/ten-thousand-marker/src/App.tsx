@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
-import MarkerClusterGroup from '../../../src'
-import { addressPoints } from '../realworld'
+import { addressPoints } from './realworld'
 import 'leaflet/dist/leaflet.css'
+import MarkerClusterGroup from "react-leaflet-cluster";
 type AdressPoint = Array<[number, number, string]>
 
-export const Example2 = () => {
+function App() {
   return (
     <div>
       <h1>10.000 marker</h1>
@@ -26,5 +26,7 @@ export const Example2 = () => {
         </MarkerClusterGroup>
       </MapContainer>
     </div>
-  )
+  );
 }
+
+export default App;
