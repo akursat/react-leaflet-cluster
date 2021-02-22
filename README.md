@@ -7,6 +7,9 @@ React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaf
 
 ![](showcase.gif)
 
+### Examples - Code Sandbox
+* [10.000 marker](https://codesandbox.io/s/hidden-breeze-nrd3e?fontsize=14&hidenavigation=1&theme=dark)
+* [Custom marker cluster](https://codesandbox.io/s/beautiful-pike-j2l0w?file=/src/App.tsx)
 
 ### Installation
 `yarn add react-leaflet-cluster`
