@@ -21,9 +21,9 @@ Or with npm:
 #### Prerequisites
 Make sure that you've installed react-leaflet and leaflet.
 ```json
-"react": "16.x",
-"leaflet": "1.7.x",
-"react-leaflet": "3.0.x"
+"react": "18.x",
+"leaflet": "1.8.x",
+"react-leaflet": "4.0.x"
 ```
 
 ####  API
