@@ -4,4 +4,7 @@
 /lib
 /node_modules
 /umd
+/examples/custom-marker-cluster/.yalc
+/examples/ten-thousand-marker/.yalc
+.yalc
 npm-debug.log*
