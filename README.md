@@ -1,6 +1,6 @@
 # react-leaflet-cluster [![npm version](https://img.shields.io/npm/v/react-leaflet-cluster.svg)](https://www.npmjs.com/package/react-leaflet-cluster)
 
-- [x] React-leaflet v3 support
+- [x] React-leaflet v4 support
 - [x] Typescript support
 
 React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaflet.markercluster. Ready to be integrated into your React.js application to create beautifully animated Marker Clustering functionality.
