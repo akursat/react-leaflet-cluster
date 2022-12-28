@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-cluster",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaflet.markercluster.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,14 +11,15 @@
     "umd"
   ],
   "scripts": {
-    "build": "tsc && npm run minify",
+    "build": "tsc && npm run minify && npm run copy:assets",
     "minify": "uglifyjs --compress --mangle --output lib/index.min.js -- lib/index.js",
     "format": "prettier --write \"src/**/*.tsx\"",
     "lint": "tslint -p tsconfig.json",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "copy:assets": "cpx 'src/assets/**' 'lib/assets'"
   },
   "dependencies": {
     "leaflet.markercluster": "^1.5.3"
@@ -37,6 +38,7 @@
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
+    "cpx": "^1.5.0",
     "eslint": "^7.32.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-prettier": "^3.4.1",

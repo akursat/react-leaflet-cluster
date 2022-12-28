@@ -1,9 +1,14 @@
-import { createPathComponent, LeafletContextInterface } from '@react-leaflet/core'
+import React from 'react'
+import {
+  extendContext,
+  createElementObject,
+  createPathComponent,
+  LeafletContextInterface,
+} from '@react-leaflet/core'
 import L, { LeafletMouseEventHandlerFn } from 'leaflet'
 import 'leaflet.markercluster'
-import 'leaflet.markercluster/dist/MarkerCluster.css'
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
-import React, { useEffect } from 'react'
+import './assets/MarkerCluster.css'
+import './assets/MarkerCluster.Default.css'
 
 delete (L.Icon.Default as any).prototype._getIconUrl
 L.Icon.Default.mergeOptions({
@@ -40,30 +45,20 @@ function getPropsAndEvents(props: MarkerClusterControl) {
       clusterProps = { ...clusterProps, [propName]: prop }
     }
   })
-  return [clusterProps, clusterEvents]
+  return { clusterProps, clusterEvents }
 }
 
-function createMarkerCluster(props: MarkerClusterControl, context: LeafletContextInterface) {
-  const [clusterProps, clusterEvents] = getPropsAndEvents(props)
-  const clusterGroup = new L.MarkerClusterGroup(clusterProps)
-
-  useEffect(() => {
-    Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
-      const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`
-      clusterGroup.on(clusterEvent, callback)
-    })
-    return () => {
-      Object.entries(clusterEvents).forEach(([eventAsProp]) => {
-        const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`
-        clusterGroup.removeEventListener(clusterEvent)
-      })
-    }
-  }, [clusterEvents, clusterGroup])
-
-  return {
-    instance: clusterGroup,
-    context: { ...context, layerContainer: clusterGroup },
-  }
+function createMarkerClusterGroup(props: MarkerClusterControl, context: LeafletContextInterface) {
+  const { clusterProps, clusterEvents } = getPropsAndEvents(props)
+  const markerClusterGroup = new L.MarkerClusterGroup(clusterProps)
+  Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
+    const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`
+    markerClusterGroup.on(clusterEvent, callback)
+  })
+  return createElementObject(
+    markerClusterGroup,
+    extendContext(context, { layerContainer: markerClusterGroup }),
+  )
 }
 
 const updateMarkerCluster = (
@@ -72,12 +67,13 @@ const updateMarkerCluster = (
   prevProps: MarkerClusterControl,
 ) => {
   //TODO when prop change update instance
-  if (props.showCoverageOnHover !== prevProps.showCoverageOnHover) {
-  }
+  //   if (props. !== prevProps.center || props.size !== prevProps.size) {
+  //   instance.setBounds(getBounds(props))
+  // }
 }
 
 const MarkerClusterGroup = createPathComponent<L.MarkerClusterGroup, MarkerClusterControl>(
-  createMarkerCluster,
+  createMarkerClusterGroup,
   updateMarkerCluster,
 )
 
