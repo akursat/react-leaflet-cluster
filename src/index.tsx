@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 import {
   extendContext,
   createElementObject,
   createPathComponent,
   LeafletContextInterface,
 } from '@react-leaflet/core'
-import L, { LeafletMouseEventHandlerFn } from 'leaflet'
+import * as L from 'leaflet'
 import 'leaflet.markercluster'
 import './assets/MarkerCluster.css'
 import './assets/MarkerCluster.Default.css'
@@ -20,13 +20,13 @@ L.Icon.Default.mergeOptions({
 type ClusterType = { [key in string]: any }
 
 type ClusterEvents = {
-  onClick?: LeafletMouseEventHandlerFn
-  onDblClick?: LeafletMouseEventHandlerFn
-  onMouseDown?: LeafletMouseEventHandlerFn
-  onMouseUp?: LeafletMouseEventHandlerFn
-  onMouseOver?: LeafletMouseEventHandlerFn
-  onMouseOut?: LeafletMouseEventHandlerFn
-  onContextMenu?: LeafletMouseEventHandlerFn
+  onClick?: L.LeafletMouseEventHandlerFn
+  onDblClick?: L.LeafletMouseEventHandlerFn
+  onMouseDown?: L.LeafletMouseEventHandlerFn
+  onMouseUp?: L.LeafletMouseEventHandlerFn
+  onMouseOver?: L.LeafletMouseEventHandlerFn
+  onMouseOut?: L.LeafletMouseEventHandlerFn
+  onContextMenu?: L.LeafletMouseEventHandlerFn
 }
 
 type MarkerClusterControl = L.MarkerClusterGroupOptions & {
