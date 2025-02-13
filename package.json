@@ -8,7 +8,8 @@
     "css",
     "es",
     "lib",
-    "umd"
+    "umd",
+    "index.js"
   ],
   "scripts": {
     "build": "tsc && npm run minify && npm run copy:assets",
