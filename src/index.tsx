@@ -7,8 +7,8 @@ import {
 } from '@react-leaflet/core'
 import L, { LeafletMouseEventHandlerFn } from 'leaflet'
 import 'leaflet.markercluster'
-import './assets/MarkerCluster.css'
-import './assets/MarkerCluster.Default.css'
+// import './assets/MarkerCluster.css'
+// import './assets/MarkerCluster.Default.css'
 
 delete (L.Icon.Default as any).prototype._getIconUrl
 L.Icon.Default.mergeOptions({
