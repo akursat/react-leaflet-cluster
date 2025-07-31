@@ -92,7 +92,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster'
 // CSS was automatically imported
 ```
 
-**After (v3.0.0):**
+**After (v3.1.0):**
 
 ```tsx
 import MarkerClusterGroup from 'react-leaflet-cluster'
