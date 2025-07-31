@@ -12,12 +12,13 @@ import 'leaflet.markercluster'
 // import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
 // import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 
-delete (L.Icon.Default as any).prototype._getIconUrl
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: new URL('./assets/marker-icon-2x.png', import.meta.url).href,
-  iconUrl: new URL('./assets/marker-icon.png', import.meta.url).href,
-  shadowUrl: new URL('./assets/marker-shadow.png', import.meta.url).href,
-})
+// Users should configure their own icon URLs as needed
+// delete (L.Icon.Default as any).prototype._getIconUrl
+// L.Icon.Default.mergeOptions({
+//   iconRetinaUrl: new URL('./assets/marker-icon-2x.png', import.meta.url).href,
+//   iconUrl: new URL('./assets/marker-icon.png', import.meta.url).href,
+//   shadowUrl: new URL('./assets/marker-shadow.png', import.meta.url).href,
+// })
 
 type ClusterType = { [key in string]: any }
 

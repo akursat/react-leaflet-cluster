@@ -50,6 +50,37 @@ import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 
 **Note for Next.js users**: These CSS imports are required and should be added to your component or a global CSS file. The package no longer automatically imports CSS to prevent Next.js build issues.
 
+#### Icon Configuration
+
+The package no longer automatically configures Leaflet's default marker icons. If you need to use default markers, you'll need to configure the icon URLs yourself. Add this configuration to your component or entry file:
+
+```tsx
+import L from 'leaflet'
+
+// Configure default marker icons
+delete (L.Icon.Default as any).prototype._getIconUrl
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+})
+```
+
+Alternatively, you can use your own custom icons for markers:
+
+```tsx
+import L from 'leaflet'
+
+const customIcon = new L.Icon({
+  iconUrl: '/path/to/your/marker-icon.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: '/path/to/your/marker-shadow.png',
+  shadowSize: [41, 41],
+})
+```
+
 #### Migration from v2.x
 
 If you're upgrading from v2.x, you need to add the CSS imports manually. The package will work without them, but the clustering won't be styled properly.

@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
 import 'leaflet/dist/leaflet.css'
 // Import the required CSS for marker clustering
-import 'react-leaflet-cluster/es/assets/MarkerCluster.css'
-import 'react-leaflet-cluster/es/assets/MarkerCluster.Default.css'
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 
 import SimpleExample from './components/SimpleExample'
 import TenThousandMarker from './components/TenThousandMarker'
 import CustomMarkerCluster from './components/CustomMarkerCluster'
+import L from 'leaflet'
 
+// configure the default icon
+delete (L.Icon.Default as any).prototype._getIconUrl
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+})
 type ExampleType = 'simple' | 'ten-thousand' | 'custom'
 
 export default function App() {
