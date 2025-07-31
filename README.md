@@ -1,5 +1,5 @@
 # react-leaflet-cluster [![npm version](https://img.shields.io/npm/v/react-leaflet-cluster.svg)](https://www.npmjs.com/package/react-leaflet-cluster)
-
+- [x] React 19 support
 - [x] React-leaflet v4 support
 - [x] Typescript support
 - [x] Next.js compatibility
