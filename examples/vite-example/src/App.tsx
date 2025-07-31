@@ -1,38 +1,80 @@
-import { useState } from "react";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
-import MarkerClusterGroup from "react-leaflet-cluster";
-import "leaflet/dist/leaflet.css";
+import React, { useState } from 'react'
+import 'leaflet/dist/leaflet.css'
+// Import the required CSS for marker clustering
+import 'react-leaflet-cluster/es/assets/MarkerCluster.css'
+import 'react-leaflet-cluster/es/assets/MarkerCluster.Default.css'
 
-function App() {
-  const [count, setCount] = useState(0);
+import SimpleExample from './components/SimpleExample'
+import TenThousandMarker from './components/TenThousandMarker'
+import CustomMarkerCluster from './components/CustomMarkerCluster'
+
+type ExampleType = 'simple' | 'ten-thousand' | 'custom'
+
+export default function App() {
+  const [currentExample, setCurrentExample] = useState<ExampleType>('simple')
+
+  const renderExample = () => {
+    switch (currentExample) {
+      case 'simple':
+        return <SimpleExample />
+      case 'ten-thousand':
+        return <TenThousandMarker />
+      case 'custom':
+        return <CustomMarkerCluster />
+      default:
+        return <SimpleExample />
+    }
+  }
 
   return (
     <div>
-      <MapContainer
-        style={{ height: "80vh" }}
-        center={[43.0, 32.0]}
-        zoom={4}
-        maxZoom={18}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
+      <h1>React Leaflet Cluster Examples</h1>
 
-        <MarkerClusterGroup>
-          <Marker position={[39.3397, 27.0597]} />
-          <Marker position={[42.2277, 25.0122]} />
-          <Marker position={[41.5044, -0.0101]} />
-        </MarkerClusterGroup>
-      </MapContainer>
-      <h1>Vite + React Leaflet Cluster</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <nav style={{ marginBottom: '20px' }}>
+        <button
+          onClick={() => setCurrentExample('simple')}
+          style={{
+            marginRight: '10px',
+            padding: '8px 16px',
+            backgroundColor: currentExample === 'simple' ? '#007bff' : '#f8f9fa',
+            color: currentExample === 'simple' ? 'white' : 'black',
+            border: '1px solid #dee2e6',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Simple Example
         </button>
-      </div>
-    </div>
-  );
-}
+        <button
+          onClick={() => setCurrentExample('ten-thousand')}
+          style={{
+            marginRight: '10px',
+            padding: '8px 16px',
+            backgroundColor: currentExample === 'ten-thousand' ? '#007bff' : '#f8f9fa',
+            color: currentExample === 'ten-thousand' ? 'white' : 'black',
+            border: '1px solid #dee2e6',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          10,000 Markers
+        </button>
+        <button
+          onClick={() => setCurrentExample('custom')}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: currentExample === 'custom' ? '#007bff' : '#f8f9fa',
+            color: currentExample === 'custom' ? 'white' : 'black',
+            border: '1px solid #dee2e6',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Custom Cluster
+        </button>
+      </nav>
 
-export default App;
+      {renderExample()}
+    </div>
+  )
+}

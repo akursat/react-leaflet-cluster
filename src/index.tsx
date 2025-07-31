@@ -7,14 +7,16 @@ import {
 } from '@react-leaflet/core'
 import L, { LeafletMouseEventHandlerFn } from 'leaflet'
 import 'leaflet.markercluster'
-import './assets/MarkerCluster.css'
-import './assets/MarkerCluster.Default.css'
+// CSS imports removed to prevent Next.js issues
+// Users should import CSS separately:
+// import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
+// import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 
 delete (L.Icon.Default as any).prototype._getIconUrl
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('./assets/marker-icon-2x.png').default,
-  iconUrl: require('./assets/marker-icon.png').default,
-  shadowUrl: require('./assets/marker-shadow.png').default,
+  iconRetinaUrl: new URL('./assets/marker-icon-2x.png', import.meta.url).href,
+  iconUrl: new URL('./assets/marker-icon.png', import.meta.url).href,
+  shadowUrl: new URL('./assets/marker-shadow.png', import.meta.url).href,
 })
 
 type ClusterType = { [key in string]: any }

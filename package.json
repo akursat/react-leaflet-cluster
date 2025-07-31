@@ -1,41 +1,39 @@
 {
   "name": "react-leaflet-cluster",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaflet.markercluster.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "es/index.js",
+  "type": "module",
+  "types": "es/index.d.ts",
   "files": [
-    "css",
     "es",
-    "lib",
-    "umd"
+    "dist"
   ],
   "scripts": {
-    "build": "tsc && npm run minify && npm run copy:assets",
-    "minify": "uglifyjs --compress --mangle --output lib/index.min.js -- lib/index.js",
+    "build": "tsc && npm run copy:assets",
     "format": "prettier --write \"src/**/*.tsx\"",
     "lint": "tslint -p tsconfig.json",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "copy:assets": "cpx 'src/assets/**' 'lib/assets'"
+    "copy:assets": "cpx 'src/assets/**' 'es/assets' && cpx 'src/assets/**' 'dist/assets'"
   },
   "dependencies": {
     "leaflet.markercluster": "^1.5.3"
   },
   "peerDependencies": {
     "leaflet": "^1.8.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0",
     "react-leaflet": "^4.0.0"
   },
   "devDependencies": {
     "@types/leaflet": "^1.7.11",
     "@types/leaflet.markercluster": "^1.5.0",
     "@types/node": "^14.18.21",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "cpx": "^1.5.0",

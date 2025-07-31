@@ -1,29 +1,29 @@
 import React, { useState } from 'react'
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
-import L, { MarkerCluster } from 'leaflet'
+import L from 'leaflet'
 import MarkerClusterGroup from 'react-leaflet-cluster'
-import './App.css'
-import 'leaflet/dist/leaflet.css'
+import './CustomMarkerCluster.css'
 
 const customIcon = new L.Icon({
-  iconUrl: require('./location.svg').default,
+  iconUrl:
+    'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDciIHZpZXdCb3g9IjAgMCA0MCA0NyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQzMSAwIDAgOC45NTQzMSAwIDIwQzAgMzEuMDQ1NyA4Ljk1NDMxIDQwIDIwIDQwQzMxLjA0NTcgNDAgNDAgMzEuMDQ1NyA0MCAyMEM0MCA4Ljk1NDMxIDMxLjA0NTcgMCAyMCAwWiIgZmlsbD0iIzAwNzNGQSIvPgo8cGF0aCBkPSJNMjAgNkMxMi4yNjg5IDYgNiAxMi4yNjg5IDYgMjBDNiAyNy43MzExIDEyLjI2ODkgMzQgMjAgMzRDMjcuNzMxMSAzNCAzNCAyNy43MzExIDM0IDIwQzM0IDEyLjI2ODkgMjcuNzMxMSA2IDIwIDZaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K',
   iconSize: new L.Point(40, 47),
 })
 
-const createClusterCustomIcon = function (cluster: MarkerCluster) {
-  return new L.DivIcon({
+const createClusterCustomIcon = function (cluster: any) {
+  return L.divIcon({
     html: `<span>${cluster.getChildCount()}</span>`,
     className: 'custom-marker-cluster',
     iconSize: L.point(33, 33, true),
   })
 }
 
-function App() {
+export default function CustomMarkerCluster() {
   const [dynamicPosition, setPosition] = useState<L.LatLngExpression>([41.051687, 28.987261])
 
   return (
     <div>
-      <h1>Custom Marker Cluster</h1>
+      <h2>Custom Marker Cluster Example</h2>
       <button
         onClick={() => {
           setPosition([40.051687, 28.987261])
@@ -43,7 +43,7 @@ function App() {
         />
         <MarkerClusterGroup
           onClick={(e: any) => console.log('onClick', e)}
-          iconCreateFunction={createClusterCustomIcon}
+          iconCreateFunction={createClusterCustomIcon as any}
           maxClusterRadius={150}
           spiderfyOnMaxZoom={true}
           polygonOptions={{
@@ -66,5 +66,3 @@ function App() {
     </div>
   )
 }
-
-export default App

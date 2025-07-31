@@ -2,31 +2,75 @@
 
 - [x] React-leaflet v4 support
 - [x] Typescript support
+- [x] Next.js compatibility
+
+## Breaking Changes in v3.0.0
+
+**CSS imports are now required manually** - The package no longer automatically imports CSS files to prevent Next.js build issues. You must now import the CSS files separately:
+
+```tsx
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
+```
 
 React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaflet.markercluster. Ready to be integrated into your React.js application to create beautifully animated Marker Clustering functionality.
 
 ![](showcase.gif)
 
 ### Examples - Code Sandbox
-* [10.000 marker](https://codesandbox.io/s/hidden-breeze-nrd3e?fontsize=14&hidenavigation=1&theme=dark)
-* [Custom marker cluster](https://codesandbox.io/s/beautiful-pike-j2l0w?file=/src/App.tsx)
+
+- [10.000 marker](https://codesandbox.io/s/hidden-breeze-nrd3e?fontsize=14&hidenavigation=1&theme=dark)
+- [Custom marker cluster](https://codesandbox.io/s/beautiful-pike-j2l0w?file=/src/App.tsx)
 
 ### Installation
+
 `yarn add react-leaflet-cluster`
 
 Or with npm:
 `npm i react-leaflet-cluster`
 
-
 #### Prerequisites
+
 Make sure that you've installed react-leaflet and leaflet.
+
 ```json
 "react": "18.x",
 "leaflet": "1.8.x",
 "react-leaflet": "4.0.x"
 ```
 
-####  API
+#### CSS Import
+
+The package requires CSS files to be imported for proper styling. Add these imports to your main component or entry file:
+
+```tsx
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
+```
+
+**Note for Next.js users**: These CSS imports are required and should be added to your component or a global CSS file. The package no longer automatically imports CSS to prevent Next.js build issues.
+
+#### Migration from v2.x
+
+If you're upgrading from v2.x, you need to add the CSS imports manually. The package will work without them, but the clustering won't be styled properly.
+
+**Before (v2.x):**
+
+```tsx
+import MarkerClusterGroup from 'react-leaflet-cluster'
+// CSS was automatically imported
+```
+
+**After (v3.0.0):**
+
+```tsx
+import MarkerClusterGroup from 'react-leaflet-cluster'
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
+```
+
+#### API
+
 For more detailed guide and API see:
 https://akursat.gitbook.io/marker-cluster/api
 
@@ -34,21 +78,22 @@ https://akursat.gitbook.io/marker-cluster/api
 
 ```tsx
 import MarkerClusterGroup from 'react-leaflet-cluster'
-import {MapContainer, Marker } from 'react-leaflet'
+import { MapContainer, Marker } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import {addressPoints} from './realworld'
+// Import the required CSS for marker clustering
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
+import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
+import { addressPoints } from './realworld'
 
 const Demo = () => {
   return (
     <MapContainer
-      style={{height: '500px'}}
+      style={{ height: '500px' }}
       center={[38.9637, 35.2433]}
       zoom={6}
       scrollWheelZoom={true}
     >
-      <MarkerClusterGroup
-        chunkedLoading
-      >
+      <MarkerClusterGroup chunkedLoading>
         {(addressPoints as AdressPoint).map((address, index) => (
           <Marker
             key={index}

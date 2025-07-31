@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "node",
     "declaration": true,
-    "outDir": "./lib",
+    "outDir": "./es",
     "strict": true,
-    "jsx": "react",
-    "esModuleInterop": true
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
   },
-  "include": ["src"],
+  "include": ["src", "examples/vite-example/src/components"],
   "exclude": ["node_modules", "**/__tests__/*"]    
 }
