@@ -1,18 +1,6 @@
 import { extendContext, createElementObject, createPathComponent, } from '@react-leaflet/core';
 import L from 'leaflet';
 import 'leaflet.markercluster';
-// CSS imports removed to prevent Next.js issues
-// Users should import CSS separately:
-// import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
-// import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
-// Users should configure their own icon URLs as needed
-// Example:
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-    iconRetinaUrl: new URL('./assets/marker-icon-2x.png', import.meta.url).href,
-    iconUrl: new URL('./assets/marker-icon.png', import.meta.url).href,
-    shadowUrl: new URL('./assets/marker-shadow.png', import.meta.url).href,
-});
 function getPropsAndEvents(props) {
     let clusterProps = {};
     let clusterEvents = {};
