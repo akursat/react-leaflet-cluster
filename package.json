@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-cluster",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaflet.markercluster.",
   "main": "dist/index.js",
   "type": "module",
