@@ -69,10 +69,29 @@ const updateMarkerCluster = (
   props: MarkerClusterControl,
   prevProps: MarkerClusterControl,
 ) => {
-  //TODO when prop change update instance
-  //   if (props. !== prevProps.center || props.size !== prevProps.size) {
-  //   instance.setBounds(getBounds(props))
-  // }
+  const { clusterProps, clusterEvents } = getPropsAndEvents(props)
+  const { clusterProps: prevClusterProps, clusterEvents: prevClusterEvents } =
+    getPropsAndEvents(prevProps)
+
+  // Update Options
+  Object.keys(clusterProps).forEach((key) => {
+    if (clusterProps[key] !== prevClusterProps[key]) {
+      // eslint-disable-next-line
+      // @ts-ignore
+      instance.options[key] = clusterProps[key]
+    }
+  })
+
+  // Update Events
+  Object.entries(prevClusterEvents).forEach(([eventAsProp, callback]) => {
+    const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`
+    instance.off(clusterEvent, callback)
+  })
+
+  Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
+    const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`
+    instance.on(clusterEvent, callback)
+  })
 }
 
 const MarkerClusterGroup = createPathComponent<L.MarkerClusterGroup, MarkerClusterControl>(

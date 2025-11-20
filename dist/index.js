@@ -32,6 +32,21 @@ function createMarkerClusterGroup(props, context) {
   );
 }
 var updateMarkerCluster = (instance, props, prevProps) => {
+  const { clusterProps, clusterEvents } = getPropsAndEvents(props);
+  const { clusterProps: prevClusterProps, clusterEvents: prevClusterEvents } = getPropsAndEvents(prevProps);
+  Object.keys(clusterProps).forEach((key) => {
+    if (clusterProps[key] !== prevClusterProps[key]) {
+      instance.options[key] = clusterProps[key];
+    }
+  });
+  Object.entries(prevClusterEvents).forEach(([eventAsProp, callback]) => {
+    const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`;
+    instance.off(clusterEvent, callback);
+  });
+  Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
+    const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`;
+    instance.on(clusterEvent, callback);
+  });
 };
 var MarkerClusterGroup = createPathComponent(
   createMarkerClusterGroup,
