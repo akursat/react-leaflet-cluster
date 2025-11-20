@@ -1,8 +1,11 @@
 # react-leaflet-cluster [![npm version](https://img.shields.io/npm/v/react-leaflet-cluster.svg)](https://www.npmjs.com/package/react-leaflet-cluster)
 - [x] React 19 support
-- [x] React-leaflet v4 support
+- [x] React-leaflet v5 support
 - [x] Typescript support
 - [x] Next.js compatibility
+
+## Breaking Changes in v4.0.0
+This release updates key peer dependencies to support React 19 and React-Leaflet 5. Make sure your project is upgraded before installing this version.
 
 ## Breaking Changes in v3.0.0
 
@@ -34,9 +37,10 @@ Or with npm:
 Make sure that you've installed react-leaflet and leaflet.
 
 ```json
-"react": "18.x",
-"leaflet": "1.8.x",
-"react-leaflet": "4.0.x"
+"react": "19.x",
+"react-dom": "19.0.0",
+"leaflet": "1.9.x",
+"react-leaflet": "5.0.x"
 ```
 
 #### CSS Import
