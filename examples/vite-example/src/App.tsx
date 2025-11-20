@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import 'leaflet/dist/leaflet.css'
 // Import the required CSS for marker clustering
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'

@@ -1,6 +1,6 @@
 import React from 'react';
 import L, { LeafletMouseEventHandlerFn } from 'leaflet';
-import 'leaflet.markercluster';
+
 type ClusterEvents = {
     onClick?: LeafletMouseEventHandlerFn;
     onDblClick?: LeafletMouseEventHandlerFn;
@@ -13,4 +13,5 @@ type ClusterEvents = {
 declare const MarkerClusterGroup: React.ForwardRefExoticComponent<L.MarkerClusterGroupOptions & {
     children: React.ReactNode;
 } & ClusterEvents & React.RefAttributes<L.MarkerClusterGroup>>;
-export default MarkerClusterGroup;
+
+export { MarkerClusterGroup as default };
