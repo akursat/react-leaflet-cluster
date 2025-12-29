@@ -6,7 +6,7 @@
 - [x] Next.js compatibility
 
 ## Breaking Changes in v4.0.0
-This release updates key peer dependencies to support React 19 and React-Leaflet 5. Make sure your project is upgraded before installing this version.
+This release updates key peer dependencies to support React 19 and React-Leaflet 5. Additionally, `@react-leaflet/core` is now a required peer dependency. Make sure your project is upgraded before installing this version.
 
 ## Breaking Changes in v3.0.0
 
@@ -41,7 +41,8 @@ Make sure that you've installed react-leaflet and leaflet.
 "react": "19.x",
 "react-dom": "19.0.0",
 "leaflet": "1.9.x",
-"react-leaflet": "5.0.x"
+"react-leaflet": "5.0.x",
+"@react-leaflet/core": ">=3.0.0"
 ```
 
 #### CSS Import
