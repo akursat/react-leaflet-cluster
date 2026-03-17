@@ -75,12 +75,20 @@ function createMarkerClusterGroup(props: MarkerClusterControl, context: LeafletC
   function flush() {
     flushScheduled = false
 
-    // A layer present in both buffers (e.g. StrictMode's mount→unmount→mount
-    // cycle) is already on the map and needs no action.
-    const removeSet = new Set(removeBuffer)
-    const addSet = new Set(addBuffer)
-    const toRemove = removeBuffer.filter((l) => !addSet.has(l))
-    const toAdd = addBuffer.filter((l) => !removeSet.has(l))
+    // Deduplicate by counting net adds/removes per layer. A simple
+    // presence check (layer in both buffers => no-op) would be wrong:
+    // React StrictMode re-runs effects (add -> remove -> add), so the
+    // same layer can appear more times in one buffer than the other.
+    const netOps = new Map<L.Layer, number>()
+    for (const l of addBuffer) netOps.set(l, (netOps.get(l) ?? 0) + 1)
+    for (const l of removeBuffer) netOps.set(l, (netOps.get(l) ?? 0) - 1)
+
+    const toAdd: L.Layer[] = []
+    const toRemove: L.Layer[] = []
+    for (const [layer, count] of netOps) {
+      if (count > 0) toAdd.push(layer)
+      else if (count < 0) toRemove.push(layer)
+    }
 
     // Clear before calling bulk methods so that any re-entrant
     // addLayer/removeLayer lands in fresh buffers.

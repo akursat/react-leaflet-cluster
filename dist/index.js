@@ -32,10 +32,15 @@ function createMarkerClusterGroup(props, context) {
   let flushScheduled = false;
   function flush() {
     flushScheduled = false;
-    const removeSet = new Set(removeBuffer);
-    const addSet = new Set(addBuffer);
-    const toRemove = removeBuffer.filter((l) => !addSet.has(l));
-    const toAdd = addBuffer.filter((l) => !removeSet.has(l));
+    const netOps = /* @__PURE__ */ new Map();
+    for (const l of addBuffer) netOps.set(l, (netOps.get(l) ?? 0) + 1);
+    for (const l of removeBuffer) netOps.set(l, (netOps.get(l) ?? 0) - 1);
+    const toAdd = [];
+    const toRemove = [];
+    for (const [layer, count] of netOps) {
+      if (count > 0) toAdd.push(layer);
+      else if (count < 0) toRemove.push(layer);
+    }
     removeBuffer = [];
     addBuffer = [];
     if (toRemove.length > 0) markerClusterGroup.removeLayers(toRemove);
