@@ -67,6 +67,7 @@ function createMarkerClusterGroup(props, context) {
   markerClusterGroup.clearLayers = function() {
     addBuffer = [];
     removeBuffer = [];
+    flushScheduled = false;
     return originalClearLayers.call(this);
   };
   markerClusterGroup._moveChild = function(layer, from, to) {

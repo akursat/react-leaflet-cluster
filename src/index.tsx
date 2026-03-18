@@ -83,6 +83,8 @@ function createMarkerClusterGroup(props: MarkerClusterControl, context: LeafletC
     for (const l of addBuffer) netOps.set(l, (netOps.get(l) ?? 0) + 1)
     for (const l of removeBuffer) netOps.set(l, (netOps.get(l) ?? 0) - 1)
 
+    // The count is used as a sign (positive => add, negative => remove),
+    // not a multiplicity — adding the same layer twice is a no-op in the cluster group.
     const toAdd: L.Layer[] = []
     const toRemove: L.Layer[] = []
     for (const [layer, count] of netOps) {
@@ -125,12 +127,14 @@ function createMarkerClusterGroup(props: MarkerClusterControl, context: LeafletC
   markerClusterGroup.clearLayers = function () {
     addBuffer = []
     removeBuffer = []
+    flushScheduled = false
     return originalClearLayers.call(this)
   }
 
   // _moveChild calls removeLayer then addLayer on the same layer synchronously
   // to update its position. The buffer would deduplicate this to a no-op, so we
   // bypass it and call the prototype methods directly.
+  // Mirrors the upstream implementation and is coupled to its signature.
   ;(markerClusterGroup as any)._moveChild = function (
     layer: L.Layer,
     from: L.LatLng,
