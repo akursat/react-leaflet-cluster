@@ -19,12 +19,12 @@ import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 
 React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaflet.markercluster. Ready to be integrated into your React.js application to create beautifully animated Marker Clustering functionality.
 
-![](showcase.gif)
+(![QuickTime movie](https://github.com/user-attachments/assets/b4220701-8d25-4352-89b6-d878dd2f98b7))
 
-### Examples - Code Sandbox
+### Examples
 
-- [10.000 marker](https://codesandbox.io/s/hidden-breeze-nrd3e?fontsize=14&hidenavigation=1&theme=dark)
-- [Custom marker cluster](https://codesandbox.io/s/beautiful-pike-j2l0w?file=/src/App.tsx)
+- [10.000 marker](https://github.com/akursat/react-leaflet-cluster/blob/main/examples/vite-example/src/components/TenThousandMarker.tsx)
+- [Custom marker cluster](https://github.com/akursat/react-leaflet-cluster/blob/main/examples/vite-example/src/components/CustomMarkerCluster.tsx)
 
 ### Installation
 
