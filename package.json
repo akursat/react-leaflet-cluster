@@ -6,7 +6,8 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup src/index.tsx --format esm --dts --clean --external @react-leaflet/core && npm run copy:assets",
