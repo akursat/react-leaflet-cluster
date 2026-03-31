@@ -7,6 +7,7 @@ import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 import SimpleExample from './components/SimpleExample'
 import TenThousandMarker from './components/TenThousandMarker'
 import CustomMarkerCluster from './components/CustomMarkerCluster'
+import BufferingTest from './components/BufferingTest'
 import L from 'leaflet'
 
 // configure the default icon
@@ -16,7 +17,7 @@ L.Icon.Default.mergeOptions({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 })
-type ExampleType = 'simple' | 'ten-thousand' | 'custom'
+type ExampleType = 'simple' | 'ten-thousand' | 'custom' | 'buffering-test'
 
 export default function App() {
   const [currentExample, setCurrentExample] = useState<ExampleType>('simple')
@@ -29,6 +30,8 @@ export default function App() {
         return <TenThousandMarker />
       case 'custom':
         return <CustomMarkerCluster />
+      case 'buffering-test':
+        return <BufferingTest />
       default:
         return <SimpleExample />
     }
@@ -70,6 +73,7 @@ export default function App() {
         <button
           onClick={() => setCurrentExample('custom')}
           style={{
+            marginRight: '10px',
             padding: '8px 16px',
             backgroundColor: currentExample === 'custom' ? '#007bff' : '#f8f9fa',
             color: currentExample === 'custom' ? 'white' : 'black',
@@ -79,6 +83,19 @@ export default function App() {
           }}
         >
           Custom Cluster
+        </button>
+        <button
+          onClick={() => setCurrentExample('buffering-test')}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: currentExample === 'buffering-test' ? '#007bff' : '#f8f9fa',
+            color: currentExample === 'buffering-test' ? 'white' : 'black',
+            border: '1px solid #dee2e6',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
+          Buffering Test
         </button>
       </nav>
 
