@@ -1,4 +1,4 @@
-# react-leaflet-cluster [![NPM version](https://badgen.net/npm/v/react-leaflet-cluster)](https://npmjs.com/package/react-leaflet-cluster) [![NPM downloads](https://badgen.net/npm/dm/react-leaflet-cluster)](https://npmjs.com/package/react-leaflet-cluster) 
+# react-leaflet-cluster [![NPM version](https://badgen.net/npm/v/react-leaflet-cluster)](https://npmjs.com/package/react-leaflet-cluster) [![NPM downloads](https://badgen.net/npm/dm/react-leaflet-cluster)](https://npmjs.com/package/react-leaflet-cluster)
 
 - [x] React 19 support
 - [x] React-leaflet v5 support
@@ -6,20 +6,27 @@
 - [x] Next.js compatibility
 
 ## Breaking Changes in v4.0.0
-This release updates key peer dependencies to support React 19 and React-Leaflet 5. Additionally, `@react-leaflet/core` is now a required peer dependency. Make sure your project is upgraded before installing this version.
+
+This release updates key peer dependencies to support React 19 and
+React-Leaflet 5. Additionally, `@react-leaflet/core` is now a required peer
+dependency. Make sure your project is upgraded before installing this version.
 
 ## Breaking Changes in v3.0.0
 
-**CSS imports are now required manually** - The package no longer automatically imports CSS files to prevent Next.js build issues. You must now import the CSS files separately:
+**CSS imports are now required manually** - The package no longer automatically
+imports CSS files to prevent Next.js build issues. You must now import the CSS
+files separately:
 
 ```tsx
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 ```
 
-React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of Leaflet.markercluster. Ready to be integrated into your React.js application to create beautifully animated Marker Clustering functionality.
+React-leaflet-cluster is a plugin for react-leaflet. A wrapper component of
+Leaflet.markercluster. Ready to be integrated into your React.js application to
+create beautifully animated Marker Clustering functionality.
 
-(![QuickTime movie](https://github.com/user-attachments/assets/b4220701-8d25-4352-89b6-d878dd2f98b7))
+![QuickTime movie](https://github.com/user-attachments/assets/b4220701-8d25-4352-89b6-d878dd2f98b7)
 
 ### Examples
 
@@ -42,23 +49,29 @@ Make sure that you've installed react-leaflet and leaflet.
 "react-dom": "19.0.0",
 "leaflet": "1.9.x",
 "react-leaflet": "5.0.x",
-"@react-leaflet/core": ">=3.0.0"
+"@react-leaflet/core":
+  ">=3.0.0"
 ```
 
 #### CSS Import
 
-The package requires CSS files to be imported for proper styling. Add these imports to your main component or entry file:
+The package requires CSS files to be imported for proper styling. Add these
+imports to your main component or entry file:
 
 ```tsx
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css'
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 ```
 
-**Note for Next.js users**: These CSS imports are required and should be added to your component or a global CSS file. The package no longer automatically imports CSS to prevent Next.js build issues.
+**Note for Next.js users**: These CSS imports are required and should be added
+to your component or a global CSS file. The package no longer automatically
+imports CSS to prevent Next.js build issues.
 
 #### Icon Configuration
 
-The package no longer automatically configures Leaflet's default marker icons. If you need to use default markers, you'll need to configure the icon URLs yourself. Add this configuration to your component or entry file:
+The package no longer automatically configures Leaflet's default marker icons.
+If you need to use default markers, you'll need to configure the icon URLs
+yourself. Add this configuration to your component or entry file:
 
 ```tsx
 import L from 'leaflet'
@@ -89,7 +102,8 @@ const customIcon = new L.Icon({
 
 #### Migration from v2.x
 
-If you're upgrading from v2.x, you need to add the CSS imports manually. The package will work without them, but the clustering won't be styled properly.
+If you're upgrading from v2.x, you need to add the CSS imports manually. The
+package will work without them, but the clustering won't be styled properly.
 
 **Before (v2.x):**
 
@@ -109,7 +123,7 @@ import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css'
 #### API
 
 For more detailed guide and API see:
-https://akursat.gitbook.io/marker-cluster/api
+<https://akursat.gitbook.io/marker-cluster/api>
 
 #### Usage
 

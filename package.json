@@ -50,7 +50,7 @@
   },
   "author": "akursat",
   "homepage": "https://akursat.gitbook.io/marker-cluster/",
-  "license": "SEE LICENSE IN <LICENSE>",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": "https://github.com/akursat/react-leaflet-cluster",
   "keywords": [
     "react",
