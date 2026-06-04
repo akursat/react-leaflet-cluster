@@ -1,3 +1,5 @@
+<mark> Open to new FE roles, let's [connect.](https://www.linkedin.com/in/ademkursatuzun/) <mark>
+
 # react-leaflet-cluster [![NPM version](https://badgen.net/npm/v/react-leaflet-cluster)](https://npmjs.com/package/react-leaflet-cluster) [![NPM downloads](https://badgen.net/npm/dm/react-leaflet-cluster)](https://npmjs.com/package/react-leaflet-cluster)
 
 - [x] React 19 support
